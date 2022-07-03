@@ -1,61 +1,39 @@
-# DNS Spoofing with WiFi Pineapple Mark VII
+# keccak256 Bruteforcer
 
-> __Author__::      TW-D
->
-> __Version__::     1.0.0
->
-> __Copyright__::   Copyright (c) 2022 TW-D
+- Title:         keccak256 Bruteforcer
+- Target:        keccak256 (SHA-3 family)
+- Category:      Bruteforce   
 
 ## Description
 
-```
+The keccak256 (SHA-3 family) algorithm computes the hash of an input to a fixed length output. The input can be a variable length string or number, but the result will always be a fixed bytes32 data type. It is a one-way cryptographic hash function, which cannot be decoded in reverse. This consists of 64 characters (letters and numbers) that can be expressed as hexadecimal numbers.
 
-				    0
-				    |
-				{}====={}
-				    |
-				    |
-				|   |   |
-				|___|___|
+[Hashing Functions In Solidity Using Keccak256](https://medium.com/0xcode/hashing-functions-in-solidity-using-keccak256-70779ea55bb0)
 
-------------------------------------------------------------------------------
-* Author: TW-D
-* Version: 1.0.0
-* Documentation: https://github.com/TW-D
-------------------------------------------------------------------------------
+## Tested on
 
-```
+>
+> Ubuntu 20.04.4 LTS x86_64
+>
+> ruby 2.7.0p0
+>
 
-BASH script automating the registration of a new DNS entry in the "/etc/hosts" file 
-of the "WiFi Pineapple Mark VII" and starting a web server to deliver a phishing page.
-
-__Note :__ *"Issues" and "Pull Requests" are welcome.*
-
-## Requirements for the controller
+## Installation
 
 ```bash
-sudo apt-get install jq php7.4-cli sshpass
+apt-get install ruby ruby-dev
+gem install keccak256
 ```
 
 ## Usage
 
-Modify the "./configuration.json" file for SSH control :
-
-```json
-{
-    "PINEAPPLE_PASSWORD": "<ROOT-ACCOUNT-PASSWORD>",
-    "PINEAPPLE_PORT": "22",
-    "PINEAPPLE_IP": "172.16.42.1"
-}
 ```
+$ ruby ./keccak256-brute.rb 
+Usage: ./keccak256-brute.rb [options]
+    -d, --digest DIGEST              The target digest.
+    -f, --file FILE                  The file including the passwords.
+    -h, --help
 
-In the "./templates/" folder, create for example an HTML file with the name "www.example.com" 
-containing the code of the "phishing" page.
-
-In this case the second argument of the "./main.sh" file will also be "www.example.com".
-
-```bash
-sudo $BASH ./main.sh <LOCAL_IP> www.example.com 80
+Examples:
+	 ruby ./keccak256-brute.rb -d b68fe43f0d1a0d7aef123722670be50268e15365401c442f8806ef83b612976b -f ./rockyou.txt
 ```
-
-__Note :__ For each new DNS entry, an HTML file must be created in the "./templates/" folder. The link between the domain name and the page will be done automatically using the "./templates/index.php" file.
