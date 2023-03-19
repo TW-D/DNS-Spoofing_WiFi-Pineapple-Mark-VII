@@ -27,7 +27,7 @@
 ```
 
 BASH script automating the registration of a new DNS entry in the "/etc/hosts" file 
-of the "WiFi Pineapple Mark VII" and starting a web server to deliver a phishing page.
+of the "WiFi Pineapple Mark VII" and starting a local web server to deliver a phishing page.
 
 __Note :__ *"Issues" and "Pull Requests" are welcome.*
 
